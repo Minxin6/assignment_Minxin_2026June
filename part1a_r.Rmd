@@ -1,5 +1,5 @@
 ---
-title: "Assignment 1a (Python) - refactor obesity dataset code"
+title: "Assignment 1a  - refactor obesity dataset code"
 output: html_notebook
 ---
 
@@ -114,6 +114,7 @@ X_columns <- c('Age', 'Gender', 'family_history_with_overweight',
                'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE',
                'CALC', 'MTRANS')
 ```
+
 
 ## Regression problem
 
