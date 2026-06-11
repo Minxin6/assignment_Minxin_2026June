@@ -28,7 +28,6 @@ assignment_Minxin_2026June/
 
 ## Data
 
-<short description of the data: where it comes from, what it contains, any preprocessing steps>
 
 ## AI usage
 

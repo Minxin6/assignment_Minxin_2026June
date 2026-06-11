@@ -12,7 +12,6 @@ output: html_notebook
 library(httr)
 library(readr)
 library(ggplot2)
-library(randomForest)
 ```
 
 
@@ -68,8 +67,16 @@ Create a function for encode the features
 encode_features <- function(df) {
   stopifnot(is.data.frame(df))
 
-  # MTRANS: active transport (walking/bike) = 1, otherwise 0
-  df$MTRANS <- as.numeric(df$MTRANS %in% c("Walking", "Bike"))
+  # print informative error if expected columns are missing
+  required <- c("MTRANS", "Gender", "family_history_with_overweight",
+                "FAVC", "SMOKE", "SCC", "CAEC", "CALC")
+  missing  <- setdiff(required, names(df))
+  if (length(missing)) {
+    stop("encode_features(): missing columns: ", paste(missing, collapse = ", "))
+  }
+
+  # MTRANS: active transport (Walking/Bike) = 1, otherwise 0
+  df$MTRANS <- as.numeric(df$MTRANS %in% c("Walking", "Bike"))   # fixed: capital W
 
   # Gender: male = 1, female = 0
   df$Gender <- as.numeric(df$Gender == "Male")
@@ -88,6 +95,7 @@ encode_features <- function(df) {
 
   df
 }
+
 
 
 df_web <- encode_features(df_web)
@@ -201,5 +209,3 @@ cat(sprintf('Mean absolute error (baseline): %.3f\n', mae_baseline))
 cat(sprintf('Mean absolute error: %.3f\n', mae_model))
 ```
 
-
-## testthat
