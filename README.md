@@ -9,7 +9,7 @@
 ```
 assignment_Minxin_2026June/
 ├── script/
-      ├──part1a_r.Rmd        # Main analysis (R Markdown)
+      ├──script.Rmd        # Main analysis (R Markdown)
 ├── data/               # Input data used by the analysis
 ├── renv.lock           # Exact package versions, for reproducibility
 ├── renv/               # renv project library setup
@@ -20,7 +20,7 @@ assignment_Minxin_2026June/
 
 ## Requirements
 
-- R version <e.g. 4.4.x>
+- R version <R 4.4.3>
 - Package environment managed with [renv](https://rstudio.github.io/renv/)
 
 
