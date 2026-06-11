@@ -1,10 +1,10 @@
-# Assignment — Minxin, June 2026
-
-<>
+# Assignment 
 
 **Author:** Minxin Zhang
-**Course:** <course name / code>
-**Date:** June 2026
+
+**Course:** Reproducible Coding for Health Data Science
+
+**Date:** 11 June 2026
 
 ## Repository structure
 
@@ -15,7 +15,7 @@ assignment_Minxin_2026June/
 ├── data/               # Input data used by the analysis
 ├── renv.lock           # Exact package versions, for reproducibility
 ├── renv/               # renv project library setup
-├── AI_STATEMENT.docx     # Statement on AI tool usage
+├── AI_STATEMENT.md     # Statement on AI tool usage
 ├── LICENSE
 └── README.md
 ```
@@ -27,13 +27,13 @@ assignment_Minxin_2026June/
 
 
 ## Data
-
-This dataset include data for the estimation of obesity levels in individuals from the countries of Mexico, Peru and Colombia, based on their eating habits and physical condition. DOI: 10.24432/C5H31Z
+This dataset include data for the estimation of obesity levels in individuals from the countries of Mexico, Peru and Colombia, based on their eating habits and physical condition.
 
 ## AI usage
 
-How AI tools were used in this assignment is documented in (AI usage statement.docx).
+How AI tools were used in this assignment is documented in [AI usage statement.docx](https://github.com/user-attachments/files/28842955/AI.usage.statement.docx)
 
 ## License
+
 
 See [`LICENSE`](LICENSE).
