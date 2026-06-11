@@ -19,8 +19,7 @@ library(randomForest)
 #2. Load the data
 
 1. Download the obesity dataset, extract the archive, and read the CSV into `df`
-2. select the web data into df_web for analysis
-
+2. select the web resourses data into df_web for prediction model
 ```{r}
 url <- 'https://archive.ics.uci.edu/static/public/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition.zip'
 
@@ -35,11 +34,11 @@ df_web <- df[1:498, ]
 
 ```
 
-## Calculate BMI and label weight category
+#3. Calculate BMI and label weight category
+1. make a function to label the BMI with WHO the weight category
+2. Draw the histgram to check the distribution of BMI
 
 ```{r}
-
-
 
 label_bmi <- function(bmi) {
   stopifnot(is.numeric(bmi))
@@ -57,14 +56,12 @@ df_web$BMI   <- df_web$Weight / df_web$Height^2
 df_web$label <- label_bmi(df_web$BMI)
 
 # Draw the Plot
-plot(df_web$BMI, type = 'l')  ##?
-
-
+hist(df_web$BMI, main = "BMI distribution", xlab = "BMI")
 ```
 
 
-##
-
+#4. Encode Feature
+Create a function for encode the features
 
 ```{r}
 
@@ -99,7 +96,7 @@ df_web <- encode_features(df_web)
 ```
 
 
-## Variable for Prediction model
+#5. Select the variables for Prediction model
 
 ```{r}
 X_columns <- c('Age', 'Gender', 'family_history_with_overweight',
@@ -108,10 +105,12 @@ X_columns <- c('Age', 'Gender', 'family_history_with_overweight',
 ```
 
 
-## Regression problem
+#6. Regression
 
 
-## class weight
+# class weight
+
+Compute inverse-frequency class weights: rarer weight categories get larger weights, so errors on them count more in the weighted MAE below.
 
 ```{r}
 
@@ -123,15 +122,13 @@ compute_class_weights <- function(label) {
 }
 
 class_weight <- compute_class_weights(df_web$label)
-class_weight
-
 
 ```
 
 
+# split the train dataset and test dataset
 
-
-## split
+Split the real-world data into a training set and a test set in a 70/30 ratio. Set a fixed random seed (set.seed(42)) to ensure the split is reproducible.
 
 ```{r}
 
@@ -149,14 +146,16 @@ y_test <- df_web$BMI[idx_test]
 ```
 
 
-## model
+# Linear regression: predict BMI from the predictor columns
 
 ```{r}
-reg <- randomForest(x = X_train, y = y_train, ntree = 100, nodesize = 5, maxnodes = 20)
+reg <- lm(BMI ~ ., data = cbind(X_train, BMI = y_train))
 ```
 
 
-## test
+## Evaluate the fitted model on the test set. 
+
+Function: plot_pred_vs_actual() plots predicted against actual BM close to the dashed diagonal indicate accurate predictions.
 
 ```{r}
 
@@ -184,7 +183,6 @@ plot_pred_vs_actual(predict(reg, X_train), y_train)
 ## Evaluate the model
 
 ```{r}
-
 
 weighted_mae <- function(actual, pred, weights) {
   sum(abs(actual - pred) * weights) / sum(weights)
