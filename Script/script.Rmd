@@ -11,7 +11,6 @@ output: html_notebook
 ```{r}
 library(httr)
 library(readr)
-library(ggplot2)
 ```
 
 
@@ -20,16 +19,21 @@ library(ggplot2)
 1. Download the obesity dataset, extract the archive, and read the CSV into `df`
 2. select the web resourses data into df_web for prediction model
 ```{r}
-url <- 'https://archive.ics.uci.edu/static/public/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition.zip'
+url      <- 'https://archive.ics.uci.edu/static/public/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition.zip'
+zip_path <- 'data.zip'
+csv_path <- 'data/ObesityDataSet_raw_and_data_sinthetic.csv'
 
-tmp <- GET(url, write_disk('data.zip', overwrite = TRUE))
-stop_for_status(tmp)
+# Download and extract only if the data isn't already present
+if (!file.exists(csv_path)) {
+  message("Downloading obesity dataset...")
+  resp <- GET(url, write_disk(zip_path, overwrite = TRUE))
+  stop_for_status(resp)
+  unzip(zip_path, exdir = "data")
+} else {
+  message("Data already present, skipping download.")
+}
 
-unzip('data.zip', exdir = './data')
-
-df <- read_csv('data/ObesityDataSet_raw_and_data_sinthetic.csv', show_col_types = FALSE)
-
-df_web <- df[1:498, ]
+df <- read_csv(csv_path, show_col_types = FALSE)
 
 ```
 
