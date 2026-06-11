@@ -1,7 +1,9 @@
 # Assignment 
 
 **Author:** Minxin Zhang
+
 **Course:** Reproducible Coding for Health Data Science
+
 **Date:** 11 June 2026
 
 ## Repository structure
