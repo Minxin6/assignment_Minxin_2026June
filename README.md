@@ -31,8 +31,9 @@ This dataset include data for the estimation of obesity levels in individuals fr
 
 ## AI usage
 
-How AI tools were used in this assignment is documented in [`AI_STATEMENT.docx`]().
+How AI tools were used in this assignment is documented in [AI usage statement.docx](https://github.com/user-attachments/files/28842955/AI.usage.statement.docx)
 
 ## License
+
 
 See [`LICENSE`](LICENSE).
