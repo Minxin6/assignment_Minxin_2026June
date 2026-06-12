@@ -1,1 +1,5 @@
-data/
+*.Rhistory
+*.RData
+*.Ruserdata
+*.Rproj
+*.nb.html

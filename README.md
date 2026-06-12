@@ -1,66 +1,49 @@
-# Assignment - BMB504725: Reproducible Coding Practices for Health Data Sciences
+# Assignment 
 
-This practical assignment is the summative assessment of the course. It consists out of two parts:
+**Author:** Minxin Zhang
 
-1. Practical demonstration of skills (coding practices) - 60%
-2. Review and reflection assignment - 40%
+**Course:** Reproducible Coding for Health Data Science
 
-## Part 1 - coding practical
-In this practical you will implement the lessons from this course in a coding project.
-There are two options for this assignment.
+**Date:** 11 June 2026
 
-### Options
-#### Option A: pre-specificied dataset
-We have prepared two notebooks in `Python` and `R`: 
+## Repository structure
 
-* `part1a_python.ipynb`
-* `part1a_r.Rmd`
+```
+assignment_Minxin_2026June/
+├── README.md
+├── data/                 # input data
+├── R/                    # R scripts
+├── docs/                 # AI statement
+├── renv.lock             # R environment lockfile
+└── LICENSE
 
-These notebooks create a model for the *Estimation of Obesity Levels Based On Eating Habits and Physical Condition* dataset ([Mendoza Palechor and De la Hoz Manotas](https://doi.org/10.1016/j.dib.2019.104344) and [UC Irvine ML repository](https://doi.org/10.24432/C5H31Z)).
-The code we provide you is very simple and misses important coding practices. If you choose this option we ask you to pick *one* of these notebooks and improve the code using the lessons from this course. Think about things like modularity, logging, error messages, documentation, tests, dependencies, packaging and version control.
 
-#### Option B: your own project
-You can also choose to implement lessons from this course in one of your own (current) projects.
-This has the advantage that time spent on this exercise is also time spent on one of your project. 
+## Requirements
 
-However, there are some things to considers. In order for us to be able to evaluate what you've learnt you have to
-* host your project on *GitHub*
-* add the course intstructors and a peer student ascollaborators on the project so that we can review your pull request. This will be done confidentially.
-* It should be clear what lessons from this course you have implemented into your project. Some aspects might have already been present before, so it is important that those are reflected upon in case no changes were made there in order to receive full credit.
+- R version <R 4.4.3>
+- Package environment managed with [renv](https://rstudio.github.io/renv/)
 
-### Instructions
-Please follow these instructions carefully. Without following these instructions we cannot assess your assignment (both option A and B)
 
-* Your project should be hosted on `GitHub` (topic of day 2) and the instructors and a peer student should be added as a collaborator.
-* You should open **a single pull request** that includes everything you did for this exercise (of course it can have many commits).
-* Assessment criteria can be found in the **Rubric** for this course. Please read these carefully so you know what you'll be graded on. They include aspects such as
-  - Use of version control
-  - Use of clean coding practices (functions, documentation etc.)
-  - Adherence FAIR coding practices
-  - etc.
-* The pull requests does *not* have to be merged. If you do merge it, only do this after assessment has taken place.
+## Data
+This dataset include data for the estimation of obesity levels in individuals from the countries of Mexico, Peru and Colombia, based on their eating habits and physical condition.
 
-## Part 2: Review and reflection
-For the second part of this course we ask you to do two things. 
-Again, assessment criteria can be found in the rubric.
+## How to setup
 
-### Part 2a: review
-Review another student their code by providing a review on their pull request.
-This way you get to practice with reviewing pull requests. We ask you to include aspects you like and aspects that can or should be improved. This can be written in the pull request.
+1. **Clone and enter the repo**
+   ```bash
+   git clone <repo-url>
+   cd <repo-root>
+   ```
+2. **Restore the R environment** — run in R from the project root:
+   ```r
+   renv::restore()
+   ```
 
-### Part 2b: reflection
-Reflect on the improvements you've made to the code. What did you do and why did you do this? This reflection should be
 
-* written down in the pull request description
-* presented in a short presentation on the last day of the course (dependent on class size)
+## AI usage
 
-## A note on the use of generative AI
-You are expected to perform these exercises by yourself to benefit most from this course. However, coding agents nowadays are a valuable tool, as also discussed in the course. Some use of AI is allowed as long as this is motivated and discussed.
-Using generative AI without disclosing this will make you ineligeble to pass the course. 
+How AI tools were used in this assignment is documented in [AI usage statement.docx](https://github.com/user-attachments/files/28842955/AI.usage.statement.docx)
 
-If generative AI is used in *Part 1* of the course this should be disclosed in full in the reflection: how was it used, how was it helpful and why was it needed?
+## License
 
-For *Part 2* of the course the use of the generative AI is prohibited.
-
-* Reviewing somebody's else code should be done by the student themselves without AI assistance. This is especially important when the code to be reviewed is another student's private project. This shou.d be done confidentially, and using generative AI would break this confidentiality (potential data leak).
-* Reflection, as the word says, is about reflecting on your work. Using generative AI for this decreases the learning potential.
+See [`LICENSE`](LICENSE).

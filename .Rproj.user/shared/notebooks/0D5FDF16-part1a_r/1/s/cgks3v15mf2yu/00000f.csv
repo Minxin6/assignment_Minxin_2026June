@@ -1,0 +1,3 @@
+"0","X_columns <- c('Age', 'Gender', 'family_history_with_overweight',"
+"0","               'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE',"
+"0","               'CALC', 'MTRANS')"
