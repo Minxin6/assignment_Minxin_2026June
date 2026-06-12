@@ -11,6 +11,8 @@ output: html_notebook
 ```{r}
 library(httr)
 library(readr)
+library(here)
+library(testthat)
 ```
 
 
@@ -20,20 +22,29 @@ library(readr)
 2. select the web resourses data into df_web for prediction model
 ```{r}
 url      <- 'https://archive.ics.uci.edu/static/public/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition.zip'
-zip_path <- 'data.zip'
-csv_path <- 'data/ObesityDataSet_raw_and_data_sinthetic.csv'
 
-# Download and extract only if the data isn't already present
+
+
+# Cache location: data/ in the project root
+data_dir <- here("data")
+csv_path <- file.path(data_dir, "ObesityDataSet_raw_and_data_sinthetic.csv")
+
+
+# Only download if the data isn't already there
 if (!file.exists(csv_path)) {
-  message("Downloading obesity dataset...")
+  message("Data not found locally — downloading...")
+  dir.create(data_dir, showWarnings = FALSE)
+
+  zip_path <- file.path(data_dir, "data.zip")
   resp <- GET(url, write_disk(zip_path, overwrite = TRUE))
   stop_for_status(resp)
-  unzip(zip_path, exdir = "data")
+  unzip(zip_path, exdir = data_dir)
 } else {
-  message("Data already present, skipping download.")
+  message("Data already present — skipping download.")
 }
 
 df <- read_csv(csv_path, show_col_types = FALSE)
+df_web <- df[1:498, ]
 
 ```
 
@@ -137,7 +148,7 @@ class_weight <- compute_class_weights(df_web$label)
 
 ```
 
-
+rm
 # split the train dataset and test dataset
 
 Split the real-world data into a training set and a test set in a 70/30 ratio. Set a fixed random seed (set.seed(42)) to ensure the split is reproducible.
